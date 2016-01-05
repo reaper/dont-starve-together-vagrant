@@ -65,6 +65,10 @@ Vagrant.configure(2) do |config|
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
   #
+  config.vm.provision "file", source: "settings.ini", destination: "~/.klei/DoNotStarveTogether/settings.ini"
+  config.vm.provision "file", source: "server_token.txt", destination: "~/.klei/DoNotStarveTogether/server_token.txt"
+  config.vm.provision "file", source: "start_dst.sh", destination: "~/start_dst.sh"
+
   config.vm.provision "shell", inline: <<-SHELL
     apt-get update
     apt-get install -y libgcc1 libstdc++6 libcurl4-gnutls-dev screen
@@ -76,5 +80,7 @@ Vagrant.configure(2) do |config|
     wget http://media.steampowered.com/installer/steamcmd_linux.tar.gz
     tar -xvzf steamcmd_linux.tar.gz
     rm steamcmd_linux.tar.gz
+    ./steamcmd.sh +login anonymous +force_install_dir ../dstserver +app_update 343050 validate +quit
+    cd ~ && ./start_dst.sh
   SHELL
 end

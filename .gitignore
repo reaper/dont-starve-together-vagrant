@@ -1,1 +1,6 @@
+# Vagrant
 .vagrant/
+
+# Files
+settings.ini
+server_token.txt

@@ -70,8 +70,9 @@ Vagrant.configure(2) do |config|
   config.vm.provision "file", source: "start_dst.sh", destination: "~/start_dst.sh"
 
   config.vm.provision "shell", inline: <<-SHELL
+    dpkg --add-architecture i386
     apt-get update
-    apt-get install -y libgcc1 libstdc++6 libcurl4-gnutls-dev screen
+    apt-get install -y lib32gcc1 lib32stdc++6 libcurl4-gnutls-dev:i386 screen
   SHELL
 
   config.vm.provision "shell", privileged: false, inline: <<-SHELL
@@ -81,6 +82,7 @@ Vagrant.configure(2) do |config|
     tar -xvzf steamcmd_linux.tar.gz
     rm steamcmd_linux.tar.gz
     ./steamcmd.sh +login anonymous +force_install_dir ../dstserver +app_update 343050 validate +quit
-    cd ~ && ./start_dst.sh
   SHELL
+
+  config.vm.provision "file", source: "dedicated_server_mods_setup.lua", destination: "~/dstserver/mods/dedicated_server_mods_setup.lua"
 end

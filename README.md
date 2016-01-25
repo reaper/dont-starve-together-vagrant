@@ -1,6 +1,10 @@
 # dont-starve-together-vagrant-docker
 Don't Starve Together vagrant with docker provider
 
+### Requirements
+- Git
+- Vagrant
+
 ## Preparation steps
 ```
 git clone https://github.com/reaper/dont-starve-together-vagrant-docker

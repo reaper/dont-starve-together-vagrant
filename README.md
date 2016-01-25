@@ -1,4 +1,4 @@
-# dont-starve-together-vagrant
+# dont-starve-together-vagrant-docker
 Don't Starve Together vagrant with docker provider
 
 ## Preparation steps

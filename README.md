@@ -17,6 +17,5 @@ Edit dedicated_server_mods_setup.lua and add your mods (READ header comments to 
 ## Startup
 ```
 vagrant up --provider=docker
-vagrant ssh
-./start_dst.sh
+vagrant ssh -- "./start_dst.sh"
 ```
